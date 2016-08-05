@@ -120,5 +120,3 @@ while ($i < count($str)) {
 	if ($i < count($str)) $newStr .= '-';
 }
 echo $newStr.'<br>';
-
-?>
