@@ -113,11 +113,15 @@ print_r($str);
 echo '<br>';
 
 $i = count($str)-1;
-$newStr = '';
+$newStr = ''; // вариант 1
+$newArr = array(); // вариант 2
+
 while ($i > -1) {
-	$newStr .= $str[$i];
+	$newStr .= $str[$i]; // вариант 1
+    $newArr[] = $str[$i];
 	$i--;
-	if ($i >= 0) $newStr .= '-';
+	if ($i >= 0) $newStr .= '-'; // вариан 1
 }
 
-echo $newStr.'<br>';
+echo $newStr.'<br>'; // вариант 1
+echo implode('-', $newArr).'<br>'; // вариант 2
