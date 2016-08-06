@@ -112,11 +112,11 @@ $str = explode(' ', $str);
 print_r($str);
 echo '<br>';
 
-$i = 0;
+$i = count($str)-1;
 $newStr = '';
-while ($i < count($str)) {
+while ($i > -1) {
 	$newStr .= $str[$i];
-	$i++;
-	if ($i < count($str)) $newStr .= '-';
+	$i--;
+	if ($i >= 0) $newStr .= '-';
 }
 echo $newStr.'<br>';
