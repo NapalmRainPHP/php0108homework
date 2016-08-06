@@ -119,4 +119,5 @@ while ($i > -1) {
 	$i--;
 	if ($i >= 0) $newStr .= '-';
 }
+
 echo $newStr.'<br>';
