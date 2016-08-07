@@ -19,7 +19,7 @@ echo '<h3>Задание #2</h3>';
 $total = 80;
 $markers = 23;
 $pencil = 40;
-$paints;
+$paints = null;
 
 $paints = $total - ($markers + $pencil);
 echo 'Красками выполенено: '.$paints.' работ';
@@ -39,8 +39,9 @@ echo 'COMECONST = '.COMECONST;
 //COMECONST = 'new value'; //Parse error: syntax error, unexpected '='
 
 echo '<h3>Задание #4</h3>';
-$age;
+
 $age = 15;
+
 if (($age>=18) && ($age<=65)) {
 	echo 'Вам ещё работать и работать';
 } elseif ($age>65) {
