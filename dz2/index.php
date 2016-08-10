@@ -147,3 +147,25 @@ function checkStr($str) {
 checkStr('Некая строка');
 
 echo '<h3>Задание #6</h3>';
+
+echo date('d.m.Y h:i').'<br>';
+echo mktime(0, 0, 0, 02, 24, 2016);
+
+echo '<h3>Задание #7</h3>';
+
+echo str_replace('К', '', 'Карл у Клары украл Кораллы').'<br>';
+echo str_replace('Две', 'Три', 'Две бутылки лимонада');
+
+echo '<h3>Задание #8</h3>';
+
+function rFile($filename) {
+	$fr = file_get_contents($filename);
+	echo $fr;
+}
+
+rFile('text.txt');
+
+echo '<h3>Задание #9</h3>';
+$f = fopen('anothertest.txt', 'w+');
+fputs($f, 'Hello again!');
+fclose($f);
