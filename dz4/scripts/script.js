@@ -5,6 +5,7 @@ var messageBox= function(message) {
 var sendForm = function(e) {
 	e.preventDefault();
 	var form = $(this);
+	var reload = form.attr('reload');
 	$.ajax({
 		url : form.attr('action'),
 		type : form.attr('method'),
@@ -15,7 +16,11 @@ var sendForm = function(e) {
 			if (result.error) {
 				messageBox(result.errorcode);
 			} else {
-				location.reload();
+				if (reload==='false') {
+					messageBox(result.errorcode);
+				} else {
+					location.reload();
+				}
 			}
 		}
 	});
@@ -88,6 +93,7 @@ var prepareRename = function() {
 
 $('document').ready(function() {
 	$('#loginForm').bind('submit', sendForm);
+	$('#regForm').bind('submit', sendForm);
 	$('#profileForm').bind('submit', sendForm);
 	var uploadForm = $('#uploadForm');
 	var fileInput = $('#fileInput');

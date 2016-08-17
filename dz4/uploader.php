@@ -13,6 +13,9 @@ $p = getProfileInfo($u['id'], $db);
 $error = true;
 $errorcode = '';
 if ($u['password']==$_COOKIE['password']) {
+	$name = htmlspecialchars($name);
+	$age = htmlspecialchars($age);
+	$about = htmlspecialchars($about);
 	if ((isset($p))&&(!empty($p))) {
 		$SQL = 'UPDATE `profiles` SET `name` = "'.$name.'", `age` = "'.$age.'", `about` = "'.$about.'" WHERE `user`= '.$u['id'].';';
 	} else {

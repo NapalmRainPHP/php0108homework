@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Авторизация</title>
+	<title>Регистрация</title>
 	<style>
 		* {
 			box-sizing: border-box;
@@ -65,15 +65,15 @@
 <body>
 <div id="messagebox"></div>
 <div class="loginForm">
-	<form action="login.php" method="POST" id="loginForm">
+	<form action="newuser.php" method="POST" id="regForm" reload="false">
 		<div class="profileBlock">
-			<h3>Авторизация</h3>
+			<h3>Регистрация</h3>
 			<div class="formLine"><div class="labelFeild">Логин:</div><div class="inputFeild"><input type="text" name="login" required></div></div>
 			<div class="formLine"><div class="labelFeild">Пароль:</div><div class="inputFeild"><input type="password" name="password" required></div></div>
-			<div class="formLine"><input type="submit" value="Войти"></div>
+			<div class="formLine"><input type="submit" value="Зарегистрироваться"></div>
 		</div>
 	</form>
-	<a href="registration.php">Регистрация</a>
+	<a href="index.php">Авторизация</a>
 </div>
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/script.js"></script>
