@@ -12,15 +12,20 @@ $p = getProfileInfo($u['id'], $db);
 
 $error = true;
 $errorcode = '';
-if ((isset($p))&&(!empty($p))) {
-	$SQL = 'UPDATE `profiles` SET `name` = "'.$name.'", `age` = "'.$age.'", `about` = "'.$about.'" WHERE `user`= '.$u['id'].';';
+if ($u['password']==$_COOKIE['password']) {
+	if ((isset($p))&&(!empty($p))) {
+		$SQL = 'UPDATE `profiles` SET `name` = "'.$name.'", `age` = "'.$age.'", `about` = "'.$about.'" WHERE `user`= '.$u['id'].';';
+	} else {
+		$SQL = 'INSERT INTO `profiles` VALUES (NULL, "'.$name.'", "'.$age.'", "'.$about.'", '.$u['id'].');';
+	}
+	if (mysqli_query($db, $SQL)) {
+		$error = false;
+	} else {
+		$errorcode = mysqli_error($db);
+	}
 } else {
-	$SQL = 'INSERT INTO `profiles` VALUES (NULL, "'.$name.'", "'.$age.'", "'.$about.'", '.$u['id'].');';
+	$errorcode = 'Ошибка прав доступа';
 }
-if (mysqli_query($db, $SQL)) {
-	$error = false;
-} else {
-	$errorcode = mysqli_error($db);
-}
+
 
 echo json_encode(['error'=>$error, 'errorcode'=>$errorcode]);
