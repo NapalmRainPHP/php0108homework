@@ -36,13 +36,10 @@ var loadImage = function(e) {
 		dataType: 'json',
 		xhr: function(){
 			console.log('1');
-			var xhr = $.ajaxSettings.xhr(); // получаем объект XMLHttpRequest
-			xhr.upload.addEventListener('progress', function(evt){ // добавляем обработчик события progress (onprogress)
-				if(evt.lengthComputable) { // если известно количество байт
-					// высчитываем процент загруженного
+			var xhr = $.ajaxSettings.xhr();
+			xhr.upload.addEventListener('progress', function(evt){
+				if(evt.lengthComputable) {
 					var percentComplete = Math.ceil(evt.loaded / evt.total * 100);
-					// устанавливаем значение в атрибут value тега <progress>
-					// и это же значение альтернативным текстом для браузеров, не поддерживающих <progress>
 					$('#pbar').css({'width': percentComplete+'%'});
 					$('#progress').text(percentComplete);
 				}
@@ -59,6 +56,36 @@ var loadImage = function(e) {
 	});
 }
 
+var deleteFile = function() {
+	var filename = $(this).attr('filename');
+	$.ajax({
+		url : 'deletefile.php',
+		type : 'POST',
+		data : 'filename='+filename,
+		async : true,
+		success : function (resp) {
+			var result = $.parseJSON(resp);
+			if (result.error) {
+				messageBox(result.errorcode);
+			} else {
+				location.reload();
+			}
+		}
+	});
+}
+
+var prepareRename = function() {
+	var s = $('.withForm').find('.oldname').attr('value');
+	$('.withForm').html(s);
+	$('.withForm').removeClass('withForm');
+	var object = $(this);
+	var name = object.attr('filename');
+	var td = object.parent().parent().find('.namefile')
+	td.addClass('withForm');
+	td.html('<form action="renamefile.php" method="POST" id="renameForm"><input type="text" name="newname" value="'+name+'"><input type="hidden" class="oldname" name="oldname" value="'+name+'"></input><input type="submit" value="Сохранить"></form>');
+	$('#renameForm').bind('submit', sendForm);
+}
+
 $('document').ready(function() {
 	$('#loginForm').bind('submit', sendForm);
 	$('#profileForm').bind('submit', sendForm);
@@ -67,4 +94,6 @@ $('document').ready(function() {
 
 	uploadForm.bind('submit', loadImage);
 	fileInput.bind('change', function() {uploadForm.submit();});
+	$('.rename').click('click', prepareRename);
+	$('.delete').click('click', deleteFile);
 });

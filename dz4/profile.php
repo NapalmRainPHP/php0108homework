@@ -82,6 +82,10 @@
 			text-align: center;
 			z-index: 2;
 		}
+		a {
+			color: #ffffff;
+			text-decoration: none;
+		}
 	</style>
 </head>
 <?
@@ -112,6 +116,7 @@ if (is_array($p)) extract($p, EXTR_OVERWRITE);
 				<div class="formLine"><div id="progressBar"><div id="progress"></div><div id="pbar"></div></div></div>
 			</div>
 		</form>
+		<a href="filelist.php">Список файлов</a>
 	</div>
 	<script type="text/javascript" src="scripts/jquery.js"></script>
 	<script type="text/javascript" src="scripts/script.js"></script>

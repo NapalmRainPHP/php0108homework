@@ -36,4 +36,4 @@ if ($u['password']==$_COOKIE['password']) {
 } else {
 	$errorcode = 'Ошибка прав доступа';
 }
-echo json_encode(array('error'=>$error, 'errorcode'=>$errorcode, 'filename'=>$newFileName, 'id'=>$id));
+echo json_encode(array('error'=>$error, 'errorcode'=>$errorcode, 'filename'=>$newFileName));
