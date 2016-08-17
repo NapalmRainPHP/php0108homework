@@ -102,5 +102,5 @@ echo '<style>.mainBlock {
 	}
 </style>';
 
-saveFile($file, 'data.xml');
-echo printOpder('data.xml');
+//saveFile($file, 'data.xml');
+//echo printOpder('data.xml');
