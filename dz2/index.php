@@ -156,6 +156,29 @@ echo '<h3>Задание #7</h3>';
 echo str_replace('К', '', 'Карл у Клары украл Кораллы').'<br>';
 echo str_replace('Две', 'Три', 'Две бутылки лимонада');
 
+echo '<h3>Задание #7-2</h3>';
+
+$string = 'RX packets:950381 errors:0 dropped:0 overruns:0 frame:0.';
+
+function getSmile() {
+	return '&#9786;';
+}
+
+function analizeP($str) {
+	if (preg_match('#\:\)#', $str)) {
+		echo getSmile();
+	} else {
+		preg_match('#packets:(.*?)\s#i', $str, $results);
+		if ((int)$results[1] > 1000) {
+			echo "Сеть есть";
+		} else {
+			echo "Сети нет!";
+		}
+	}
+}
+
+analizeP($string);
+
 echo '<h3>Задание #8</h3>';
 
 function rFile($filename) {
