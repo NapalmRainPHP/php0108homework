@@ -17,10 +17,9 @@ $f = fopen('data/nums.csv', "r");
 $res = array();
 $res = fgetcsv($f, 500, ",");
 fclose($f);
-$sum = $res[0];
-$res = array_slice($res, 1);
+$sum = 0;
 foreach ($res AS $value) {
-	$sum += $value;
+	if ($value%2 == 0) $sum += $value;
 }
 
 echo $sum;
