@@ -2,8 +2,10 @@
 class Model {
 	public $dblink = NULL;
 	public $tablename;
+	public $PK;
 
-	public function __construct() {
+	public function __construct($tableName) {
+		$this->tablename = $tableName;
 		$this->dblink = DBCase::connect();
 	}
 
@@ -15,13 +17,11 @@ class Model {
 		if ($limit!=NULL) {
 			$SQL .= ' LIMIT '.$limit;
 		}
-
 		$res = mysqli_query($this->dblink, $SQL);
 		while ($row = mysqli_fetch_array($res)) {
 			$array[$i] = $row;
 			$i++;
 		}
-
 		return $array;
 	}
 
@@ -88,6 +88,7 @@ class Model {
 		$row = mysqli_fetch_array($res);
 		return $row;
 	}
+
 	public function getLast() {
 		$res = mysqli_query($this->dblink, 'SELECT * FROM '.$this->tablename.' ORDER BY `'.$this->PK.'`DESC LIMIT 1');
 		$row = mysqli_fetch_array($res);
