@@ -6,7 +6,7 @@ class Templater {
 	}
 
 	public function parse($templateName) {
-		$html = file_get_contents('/templates/'.$templateName.'/index.html');
+		$html = file_get_contents('template/index.html');
 		if ((isset($this->opinions))&&($this->opinions!=NULL)&&(!empty($this->opinions))) {
 			foreach ($this->opinions AS $key=>$value) {
 				if ((!empty($key))&&(!empty($value))&&(!is_array($value))) {
