@@ -7,4 +7,5 @@ $data['header'] = 'Домашнее задание 5';
 	<li><a href='filelists'>Список файлов</a></li>
 	<li><a href='signup'>Регистрация</a></li>
 	<li><a href='signin'>Авторизация</a></li>
+	<li><a href='userslist'>Список пользователей</a></li>
 </ul>

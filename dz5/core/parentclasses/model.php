@@ -9,7 +9,7 @@ class Model {
 		$this->dblink = DBCase::connect();
 	}
 
-	public function getAll($limit=NULL, $order='ASK') {
+	public function getAll($limit=NULL, $order='ASC') {
 		$array = [];
 		$i = 0;
 		$SQL = "SELECT * FROM `{$this->tablename}`";
@@ -22,6 +22,26 @@ class Model {
 			$array[$i] = $row;
 			$i++;
 		}
+		return $array;
+	}
+
+	public function getAllOrder($limit=NULL, $orderby=NULL, $order='ASC') {
+		$array = [];
+		if ($orderby==NULL) {
+			$orderby = $this->PK;
+		}
+		$i = 0;
+		$SQL = "SELECT * FROM `{$this->tablename}`";
+		$SQL .= ' ORDER BY `'.$orderby.'` '.$order;
+		if ($limit!=NULL) {
+			$SQL .= ' LIMIT ' . $limit;
+		}
+		$res = mysqli_query($this->dblink, $SQL);
+		while ($row = mysqli_fetch_array($res)) {
+			$array[$i] = $row;
+			$i++;
+		}
+		echo mysqli_error($this->dblink);
 		return $array;
 	}
 
