@@ -11,6 +11,10 @@
 				<div class="labelFeild">Пароль:</div><div class="inputFeild"><input type="password" name="password" required></div>
 				<div class="clear_fix"></div>
 			</div>
+			<div class="formLine">
+				<div class="labelFeild">e-mail:</div><div class="inputFeild"><input type="text" name="email" required></div>
+				<div class="clear_fix"></div>
+			</div>
 			<div class="g-recaptcha" data-sitekey="6LerCioTAAAAAFv1ndKT8mD6xppqfUiItKedk0rk"></div>
 			<div class="formLine"><input type="submit" value="Зарегистрироваться"></div>
 		</div>

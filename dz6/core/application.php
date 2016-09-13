@@ -6,6 +6,7 @@ class Application {
 		require_once 'core/parentclasses/controller.php';
 		require_once 'core/parentclasses/view.php';
 		require_once 'core/config.php';
+		require_once 'vendor/autoload.php';
 		$route = explode('/', ROUTE);
 		$page = NULL;
 		$module = NULL;

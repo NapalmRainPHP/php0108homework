@@ -5,7 +5,6 @@ if (isset($_GET['route'])) {
 	$route = $_GET['route'];
 }
 define('ROUTE', $route);
-
 require_once 'core/application.php';
 
 $app = new Application();
