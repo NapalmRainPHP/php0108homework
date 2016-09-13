@@ -1,7 +1,8 @@
 var messageBox= function(message) {
 	$('#messagebox').html(message);
-	window.setTimeout(function() {$('#messagebox').html('');}, 2000);
+	window.setTimeout(function() {$('#messagebox').html('');}, 5000);
 }
+
 var sendForm = function(e) {
 	e.preventDefault();
 	var form = $(this);

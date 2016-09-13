@@ -1,5 +1,4 @@
 <?php
-
 class userslistController extends Controller {
 	public function indexAction() {
 		$view = new View();
@@ -11,8 +10,10 @@ class userslistController extends Controller {
 
 		for($i = 0; $i<count($ulist); $i++) {
 			$ulist[$i]['user'] = $users->getByID($ulist[$i]['user']);
+			$agest = ($ulist[$i]['age']>=18) ? 'Совершеннолетний':'Несовершенноледний';
+			$ulist[$i]['agest'] = $agest;
 		}
-
-		$view->render('userslist', ['list'=>$ulist]);
+//		$view->render('userslist', ['list'=>$ulist]);
+		$view->generate('userslist.twig', array("title" => "Список пользователей", 'header' => 'Список пользователей', 'data'=>$ulist));
 	}
 }

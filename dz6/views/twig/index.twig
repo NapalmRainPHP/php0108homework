@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href='template/css/style.css' rel='stylesheet' type='text/css'>
+    <meta name="Keywords" content="{*KEYWORDS*}">
+    <meta name="Description" content="{*DESCRIPTION*}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Алексеев Николай (Rain...)">
+    <meta name="copyright" content="Rain Global Studio">
+    <meta name="document-state" content="dynamic">
+    <meta name="revezit-after" content="1 deys">
+	<title>{{ title }}</title>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
+	<header>
+		<h2>{{ header }}</h2>
+	</header>
+	<section>
+		{% block content %}
+		{% endblock %}
+	</section>
+	<footer>
+
+	</footer>
+	<script type='text/javascript' src='{*MAIN_URL*}/scripts/jquery.js'></script>
+	<script type='text/javascript' src='{*MAIN_URL*}/scripts/script.js'></script>
+</body>
+</html>

@@ -1,5 +1,17 @@
 <?php
 class View {
+	private $twig;
+
+	function __construct() {
+		$loader = new Twig_Loader_Filesystem('views/twig');
+		$twig = new Twig_Environment($loader, ['cache' => 'cache']);
+		$this->twig = $twig;
+	}
+
+	public function generate($content_view, $data = null) {
+		echo $this->twig->render($content_view, $data);
+	}
+
 	public function render($viewName, $params=NULL) {
 		require_once 'templater.php';
 		if ($params!=null) {
