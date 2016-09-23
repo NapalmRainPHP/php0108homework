@@ -1,0 +1,20 @@
+RewriteEngine on 
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ index.php?route=$1 [L,QSA]
+
+AddDefaultCharset utf-8
+#
+#<files .htaccess="">
+#order allow,deny
+#deny from all
+#</files>
+#FileETag MTime Size
+#<ifmodule mod_expires.c>
+#<filesmatch ".(jpg|gif|png|css|js)$">
+#ExpiresActive on
+#ExpiresDefault «access plus 1 year»
+#</filesmatch>
+#</ifmodule>

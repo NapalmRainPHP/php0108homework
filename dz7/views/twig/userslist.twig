@@ -1,0 +1,10 @@
+{% extends "index.twig" %}
+
+{% block content %}
+	<table>
+	<tr><td>#</td><td>ID</td><td>Имя</td><td>Совершеннолетность</td></tr>
+	{% for row in data %}
+		<tr><td>#</td><td>{{ row.user.id }}</td><td>{{ row.name }}</td><td>{{ row.agest }}</td></tr>
+	{% endfor %}
+	</table>
+{% endblock %}
