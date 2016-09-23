@@ -6,6 +6,7 @@
  * Date: 31.08.2016
  * Time: 11:58
  */
+
 class DBCase {
 	private function __construct() {
 		//protected
@@ -13,6 +14,6 @@ class DBCase {
 
 	public static function connect() {
 		$configs = Config::getSettings();
-		return @mysqli_connect($configs['host'], $configs['username'], $configs['password'], $configs['dbname']);
+		//return @mysqli_connect($configs['host'], $configs['username'], $configs['password'], $configs['dbname']);
 	}
 }

@@ -6,12 +6,10 @@ class filelistsController extends Controller {
 		$list = NULL;
 		if (isset($_POST['username'])) {
 			require_once 'models/users.php';
-			$users = new Users();
-			$ud = $users->getByAttributes(['login'=>$_POST['username']]);
+			$ud = users::where('login', '=', $_POST['username'])->get();
 			if ($ud!=NULL) {
 				require_once 'models/photos.php';
-				$l = new Photos();
-				$list = $l->getByAttributes(['addedBy'=>$ud[0]['id']]);
+				$list = photos::where('addedBy', '=', $ud[0]['id'])->get();
 			}
 		}
 

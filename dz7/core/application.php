@@ -1,12 +1,29 @@
 <?php
+require_once 'core/config.php';
+use Illuminate\Database\Capsule\Manager as Capsule;
+$capsule = new Capsule;
+$configs = Config::getSettings();
+
+$capsule->addConnection([
+	'driver'    => 'mysql',
+	'host'      => $configs['host'],
+	'database'  => $configs['dbname'],
+	'username'  => $configs['username'],
+	'password'  => $configs['password'],
+	'charset'   => 'utf8',
+	'collation' => 'utf8_unicode_ci',
+	'prefix'    => '',
+]);
+
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
+
 class Application {
 	public function run() {
 		require_once 'core/parentclasses/dbcase.php';
 		require_once 'core/parentclasses/model.php';
 		require_once 'core/parentclasses/controller.php';
 		require_once 'core/parentclasses/view.php';
-		require_once 'core/config.php';
-		require_once 'vendor/autoload.php';
 		$route = explode('/', ROUTE);
 		$page = NULL;
 		$module = NULL;

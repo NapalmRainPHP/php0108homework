@@ -1,6 +1,8 @@
 <?php
 error_reporting(E_ALL);
 $route = 'index';
+require_once 'vendor/autoload.php';
+
 if (isset($_GET['route'])) {
 	$route = $_GET['route'];
 }

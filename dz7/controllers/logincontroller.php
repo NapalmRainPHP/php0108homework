@@ -10,8 +10,8 @@ class loginController extends Controller {
 	public function indexAction() {
 		extract($_POST, EXTR_OVERWRITE);
 		require_once 'models/users.php';
-		$users = new Users();
-		$ud = $users->getByAttributes(['login'=>$login]);
+		$ud = users::where('login', '=', $login)->get();
+
 		$error = true;
 		$errorcode = 'Неправильная пара логин-пароль';
 		if ($ud!=NULL) {

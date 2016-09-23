@@ -3,12 +3,11 @@ class newuserController extends Controller {
 	public function indexAction() {
 		extract($_POST, EXTR_OVERWRITE);
 		require_once 'models/users.php';
-		$users = new Users();
-		$ud = $users->getByAttributes(['login'=>$login]);
+
+		$ud = users::where('login', '=', $login)->get();
 		$error = true;
 		$errorcode = 'Пользователь с таким именем уже существует';
-
-		if ((!isset($ud))||(empty($ud))) {
+		if ((!isset($ud))||(empty($ud))||(count($ud)==0)) {
 			if($curl = curl_init()) {
 				curl_setopt($curl, CURLOPT_URL, 'https://www.google.com/recaptcha/api/siteverify');
 				curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);
@@ -17,10 +16,11 @@ class newuserController extends Controller {
 				$out = curl_exec($curl);
 				$capcha = json_decode($out, true);
 				if ($capcha['success']) {
+					$users = new users();
 					$users->login = $login;
 					$users->password = $password;
-					$user = $users->save();
-					if ($user) {
+					$users->ip = $_SERVER['REMOTE_ADDR'];
+					if ($users->save()) {
 						$mail = new PHPMailer;
 						//$mail->SMTPDebug = 3;                               // Enable verbose debug output
 						$mail->isSMTP();                                      // Set mailer to use SMTP

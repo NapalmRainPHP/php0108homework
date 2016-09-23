@@ -1,5 +1,22 @@
 <?php
-class Users extends Model {
+class users extends Illuminate\Database\Eloquent\Model {
+	public $timestamps = false;
+	public function getUsersList() {
+		$result = $this::all();
+		$list = [];
+		for ($i = 0; $i<count($result); $i++) {
+			$p = profiles::where('user', ' = ', $result[$i]['id'])->get();
+			if (is_array($p)) {
+				$p = $p[0];
+			} else {
+				$p = ['name'=>'', 'age'=>0, 'about'=>'', 'user'=>$list[$i]['id']];
+			}
+			$list[] = array_merge($result[$i], $p);
+		}
+		return $list;
+	}
+}
+/*class Users extends Model {
 	public $id;
 	public $login;
 	public $password;
@@ -28,4 +45,4 @@ class Users extends Model {
 		}
 	}
 
-}
+}*/

@@ -9,7 +9,7 @@ class Model {
 		$this->dblink = DBCase::connect();
 	}
 
-	public function getAll($limit=NULL, $order='ASC') {
+	/*public function getAll($limit=NULL, $order='ASC') {
 		$array = [];
 		$i = 0;
 		$SQL = "SELECT * FROM `{$this->tablename}`";
@@ -114,4 +114,5 @@ class Model {
 		$row = mysqli_fetch_array($res);
 		return $row;
 	}
+*/
 }
