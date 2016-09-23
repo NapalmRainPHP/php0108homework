@@ -1,2 +1,2 @@
 <?php
-$data = ['title'=>'DZ!'];
+$data = ['title'=>'DZ7!'];
