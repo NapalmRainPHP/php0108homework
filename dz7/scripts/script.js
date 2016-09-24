@@ -21,7 +21,7 @@ var sendForm = function(e) {
 				if (reload==='false') {
 					messageBox(result.errorcode);
 				} else {
-					location.href='index';
+					location.reload();
 				}
 			}
 		}
