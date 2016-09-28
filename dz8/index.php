@@ -35,16 +35,16 @@ $app->get('/catalog/{list}', function($request, $response, $options) {
 
 	if ($cat == 'all') {
 		require_once 'models/categories.php';
-		$list = categories::all();
+		$list = categories::getAllRecursive(NULL);
 		$error = false;
 	} else {
 		require_once 'models/categories.php';
 		$cat = (int)$cat;
-		$list = categories::where('ParentCategories', $cat)->toArray();
+		$list = categories::getAllRecursive($cat);
 		$error = false;
 	}
 	$answer = json_encode(['error'=>$error, 'response'=>$list]);
-	$response->write('<pre>'.$answer.'</pre>');
+	$response->write($answer);
 	return $response;
 });
 

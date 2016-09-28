@@ -1,19 +1,28 @@
 <?php
 class categories extends Illuminate\Database\Eloquent\Model {
 	public static function getChilds($catID) {
-		categories::where('ParentCategories', $catID)->get()->toArray();
+		$result = [];
+		$list = categories::where('ParentCategories', $catID)->get()->toArray();
+		foreach ($list AS $item) {
+			$childs = categories::getChilds($item['id']);
+			$result[] = [$item, 'childs'=>$childs];
+		}
+		return $result;
 	}
 
 	public static function getAllRecursive($catID=NULL) {
 		$slist = [];
+		$result = [];
 		if ($catID==NULL) {
-			$slist['parents'] = categories::where('ParentCategories', 'IS NULL')->get()->toArray();
+			$slist['parents'] = categories::where('ParentCategories', NULL)->get()->toArray();
 			foreach ($slist['parents'] AS $category) {
-				$category['childs'] = categories::getChilds($category['id']);
+				$childs = categories::getChilds($category['id']);
+				$result[] = [$category, 'childs'=>$childs];
 			}
 		} else {
 			$slist['parents'] = categories::find((int)$catID)->toArray();
-			$slist['parents']['childs'] = categories::getChilds((int)$catID);
+			$result[] = [$slist['parents'], 'childs'=>categories::getChilds((int)$catID)];
 		}
+		return $result;
 	}
 }
