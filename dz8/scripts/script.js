@@ -50,6 +50,29 @@ var getCategories = function(cat) {
 		}
 	});
 }
+
+var sendVKPost = function(e) {
+	var form = $(this);
+	e.preventDefault();
+	$.ajax({
+		url : form.attr('action'),
+		type : 'POST',
+		async : true,
+		data : form.serialize(),
+		success : function (resp) {
+
+			var result = $.parseJSON(resp);
+			console.log(result);
+			if (result.error) {
+				messageBox(result.error.error_msg);
+			} else {
+				alert('Запись успешно размещена');
+			}
+		}
+	});
+}
+
 $(document).ready(function() {
 	getCategories('all'); // можно вместо all указывать id категории и получать её дерево
+	$('#vkpostform').submit(sendVKPost);
 });

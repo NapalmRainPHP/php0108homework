@@ -21,6 +21,22 @@
 			<h2>
 				Обращение к АПИ вк
 			</h2>
+			<div class="loginForm">
+				<form action="vkpost.php" method="POST" id="vkpostform">
+					<div class="profileBlock">
+						<h3>Пост на стену</h3>
+						<div class="formLine">
+							<div class="labelFeild">Айди стены :</div><div class="inputFeild"><input type="text" name="wall" required></div>
+							<div class="clear_fix"></div>
+						</div>
+						<div class="formLine">
+							<div class="labelFeild">Ссылка на фото:</div><div class="inputFeild"><input type="text" name="image" required></div>
+							<div class="clear_fix"></div>
+						</div>
+						<div class="formLine"><input type="submit" value="разместить"></div>
+					</div>
+				</form>
+			</div>
 		</div>
 	</section>
 	<script type='text/javascript' src='scripts/jquery.js'></script>
