@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::any('/ses', function () {
+    return view('sex');
+});
